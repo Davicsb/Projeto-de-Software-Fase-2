@@ -1,12 +1,14 @@
 from classes import *
 import os
 
+
+
 def clear_terminal():
     os.system("cls" if os.name == "nt" else "clear")
 
 while True:
         print("\nWelcome to E-Learning Platform!\nWhat do you wanna do?")
-        choose = input("1 - Create, update and manage online courses\n2 - Register, update and manage students\n3 - Interactive learning tools\n4 - Quit\n>>> ")
+        choose = input("1 - Create, update and manage online courses\n2 - Register, update and manage students\n3 - Interactive learning tools\n4 - Foruns and chats\n5 - Emit certificate\n6 - Analytics and reporting\n7 - Access control\n8 - Payment and subscription\n9 - Quit\n>>> ")
         
         if choose == "1":
             clear_terminal()
@@ -80,7 +82,7 @@ while True:
                         age = input("Enter the student's age: ")
                         course_title = input("Enter the student's course: ")
                         paid = input("The student have access to paid content? ")
-                        student_manager.add_student(name, student_id, age, course_title, paid)
+                        student_manager.add_student(name, student_id, age, course_title, paid, course_manager)
                     elif action == "2":
                         clear_terminal()
                         name = input("Enter the student's name to update: ")
@@ -112,6 +114,8 @@ while True:
                     print("OPS! Invalid option!\n")
 
         elif choose == "3":
+            clear_terminal()
+
             while True:
                 print()
                 print("What do you wanna do?")
@@ -126,7 +130,6 @@ while True:
                         answer = input(f"Add the {current + 1}º question answer: ")
                         course_manager.add_quiz(title, question, answer)
 
-
                 elif action == "2":
                     clear_terminal()
                     title = input("Enter de course title: ")
@@ -139,7 +142,111 @@ while True:
                 else:
                     clear_terminal()
                     print("OPS! Invalid option!\n")
-        
+                            
         elif choose == "4":
-            print("See you soon!")
+            clear_terminal()
+
+            while True:
+                print()
+                print("What do you wanna do?")
+                action = input("1 - Add a post\n2 - View posts\n3 - Delete a post\n4 - Back\n>>> ")
+                if action == "1":
+                    clear_terminal()
+                    title = input("Enter de course title that you wanna add a post: ")
+                    name = input("Enter your name: ")
+                    post = input("Enter your post: ")
+                    course_manager.add_comment_in_forum(title, name, post)
+
+                elif action == "2":
+                    clear_terminal()
+                    title = input("Enter de course title: ")
+                    course_manager.view_comments_in_forum(title)
+
+                elif action == "3":
+                    clear_terminal()
+                    title = input("Enter de course title that you wanna delete a post: ")
+                    name = input("Enter the name: ")
+                    post = input("Enter yhe post: ")
+                    course_manager.remove_comment(title, name, post)
+
+                elif action == "4":
+                    clear_terminal()
+                    break
+
+                else:
+                    clear_terminal()
+                    print("OPS! Invalid option!\n")
+
+        elif choose == "5":
+            clear_terminal()
+            fill_and_generate_certificate(student_manager)
+        
+        elif choose == "6":
+            clear_terminal()
+
+            while True:
+                print()
+                print("What do you wanna do?")
+                action = input("1 - Analytics and reporting\n2 - Back\n>>> ")
+                if action == "1":
+                    clear_terminal()
+                    name = input("Enter the student's name: ")
+                    student_manager.analytics_and_reporting(name)
+
+                elif action == "2":
+                    clear_terminal()
+                    break
+
+                else:
+                    clear_terminal()
+                    print("OPS! Invalid option!\n")
+        
+        elif choose == "7":
+             clear_terminal()
+
+             while True:
+                print()
+                print("What do you wanna do?")
+                action = input("1 - Check course access\n2 - Back\n>>> ")
+                if action == "1":
+                    clear_terminal()
+                    name = input("Enter the student's name: ")
+                    title = input("Enter the course that you wanna view the access: ")
+                    student_manager.check_course_access(name, title)
+
+                elif action == "2":
+                    clear_terminal()
+                    break
+
+                else:
+                    clear_terminal()
+                    print("OPS! Invalid option!\n")
+        
+        elif choose == "8":
+            clear_terminal()
+
+            while True:
+                print()
+                print("What do you wanna do?")
+                action = input("1 - View paid condition\n2 - Back\n>>> ")
+                if action == "1":
+                    clear_terminal()
+                    name = input("Enter the student's name: ")
+                    student_manager.payment_condition(name)
+
+                elif action == "2":
+                    clear_terminal()
+                    break
+
+                else:
+                    clear_terminal()
+                    print("OPS! Invalid option!\n")
+
+        elif choose == "9":
+            clear_terminal()
+            print("Quitting...")
             break
+
+        else:
+            clear_terminal()
+            print("OPS! Invalid option!\n")
