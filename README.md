@@ -1,8 +1,17 @@
 # E-Learning Platform
 # Classes usadas:
+View (Abstract Class): Classe base abstrata para todas as visualizações da plataforma. Fornece métodos comuns para manipulação de usuários e senha.
+EnterView: Responsável pela tela de login, verifica as credenciais e direciona o usuário para a visualização correspondente.
+RegisterView: Gerencia o registro de novos alunos, solicitando informações do usuário e inscrevendo-o em um curso.
+FirstView: Tela inicial que permite ao usuário escolher entre login, registro ou sair do sistema.
+StudentView: Interface para alunos, permitindo acessar aulas, quizzes, fórum e emitir certificados.
+TeacherView: Interface para professores, possibilitando gerenciamento de cursos, alunos, quizzes e fórum.
+SuperUserView: Interface para super usuários (administradores), permitindo gerenciamento de usuários e cursos.
 Classe CourseManager: usado para gerenciar todos os cursos;\
-Classe StudentManager: usado para gerenciar todos os estudantes;\
-Classe Student: Cada estudante individual. (Nome do aluno, identificação do aluno, idade do aluno, classe Curso que pertence, progresso do aluno e situação de pagamento do aluno);\
+Classe UserManager: usado para gerenciar todos os usuários;\
+Classe Student: Cada estudante individual. (Nome do aluno, senha, identificação do aluno, idade do aluno, classe Curso que pertence, progresso do aluno e situação de pagamento do aluno);\
+Classe Teacher: Cada professsor individual. (Nome do professor, senha, identificação);\
+Classe SuperUser: O usuário que tem aceso a tudo. (Nome do superusuário, senha, identficação);\
 Classe Curso: Cada curso individual. (Título do curso, quantidade de horas do curso, professor do curso, uma lista da classes Leasson para assistir do curso, uma lista da classe Quiz, uma lista do fórum do curso);\
 Classe Lesson: Aulas que podem ser assistidas no curso. (Título da aula e link da aula);\
 Classe Quiz: Cada teste do curso. (Pergunta e resposta);\
